@@ -1,4 +1,4 @@
-from flask import redirect, url_for, flash, render_template, request
+from flask import redirect, url_for, flash, render_template, request, jsonify
 from flask_login import login_user, login_required, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -29,6 +29,11 @@ def add_message():
     db.session.commit()
 
     return redirect(url_for('main'))
+
+
+@app.route('/_update', methods=['POST'])
+def update():
+
 
 
 @app.route('/register', methods=['GET', 'POST'])

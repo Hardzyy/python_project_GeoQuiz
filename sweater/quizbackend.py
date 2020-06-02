@@ -14,8 +14,10 @@ def get_random(obj):
     arange = range(1, count+1)
     id_answers = random.choices(arange, k=count)
     id_right = random.choice(id_answers)
-    country = country_capital_easy.query.get(id_right).name
+    country = country_capital_easy.query.get(id_right)
+    right_name = country.name
+    right_capital = country.capital
     answers = []
-    answers[0] = country
+    answers[0] = right_name
     for i in range(1, count+1);
         answers[i] = country_capital_easy.query.get(i).capital
