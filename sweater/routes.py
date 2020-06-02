@@ -8,7 +8,9 @@ from sweater.models import Message, Users, country_capital_easy
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    return render_template('index.html', one=country_capital_easy.query.last.id)
+    name = country_capital_easy.query.get(2)
+    capital = name.capital
+    return render_template('index.html', one=capital)
 
 
 @app.route('/main', methods=['GET'])
