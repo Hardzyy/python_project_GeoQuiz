@@ -28,7 +28,7 @@ def easy_test():
 @login_required
 def update1():
     array = get_random(country_capital_easy)
-    return render_template('updata1.html', name=array[0], ans1=array[1],
+    return render_template('updata1.html', right_ans=array[0].capital, name=array[0].name, ans1=array[1],
                            ans2=array[2], ans3=array[3], ans4=array[4])
 
 
@@ -36,8 +36,9 @@ def update1():
 @login_required
 def update():
     array = get_random(country_capital_easy)
-    return jsonify({'data': render_template('updata.html', name=array[0], ans1=array[1],
-                                            ans2=array[2], ans3=array[3], ans4=array[4])})
+    return jsonify({'data': render_template('updata.html', right_ans=array[0].capital, name=array[0].name,
+                                            ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])})
+
 
 @app.route('/end_test', methods=['GET', 'POST'])
 @login_required
