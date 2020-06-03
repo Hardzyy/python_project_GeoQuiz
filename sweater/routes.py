@@ -12,17 +12,37 @@ def hello_world():
     return render_template('index.html')
 
 
-@app.route('/main', methods=['GET', 'POST'])
+@app.route('/main', methods=['GET'])
 @login_required
 def main():
     return render_template('main.html')
 
 
-@app.route('/_update', methods=['POST'])
+@app.route('/testeasy', methods=['GET', 'POST'])
+@login_required
+def easy_test():
+    return render_template('testeasy.html')
+
+
+@app.route('/_update', methods=['POST', 'GET'])
+@login_required
+def update1():
+    array = get_random(country_capital_easy)
+    return render_template('updata1.html', name=array[0], ans1=array[1],
+                           ans2=array[2], ans3=array[3], ans4=array[4])
+
+
+@app.route('/_update/', methods=['POST', 'GET'])
+@login_required
 def update():
     array = get_random(country_capital_easy)
     return jsonify({'data': render_template('updata.html', name=array[0], ans1=array[1],
                                             ans2=array[2], ans3=array[3], ans4=array[4])})
+
+@app.route('/end_test', methods=['GET', 'POST'])
+@login_required
+def end_test():
+    return jsonify({'data': render_template('end_test.html')})
 
 
 @app.route('/register', methods=['GET', 'POST'])
