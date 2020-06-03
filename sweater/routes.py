@@ -12,16 +12,17 @@ def hello_world():
     return render_template('index.html')
 
 
-@app.route('/main', methods=['GET'])
+@app.route('/main', methods=['GET', 'POST'])
 @login_required
 def main():
-    array = get_random(country_capital_easy)
-    return render_template('main.html',  name=array[0], ans1=array[1],
-                           ans2=array[2], ans3=array[3], ans4=array[4])
+    return render_template('main.html')
 
-#
-# @app.route('/_update', methods=['POST'])
-# def update():
+
+@app.route('/_update', methods=['POST'])
+def update():
+    array = get_random(country_capital_easy)
+    return jsonify({'data': render_template('updata.html', name=array[0], ans1=array[1],
+                                            ans2=array[2], ans3=array[3], ans4=array[4])})
 
 
 @app.route('/register', methods=['GET', 'POST'])
