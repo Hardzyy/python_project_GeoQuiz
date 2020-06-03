@@ -1,23 +1,22 @@
 import random
-
-from sweater.models import country_capital_easy
-
+import itertools
 
 def get_random(obj):
     count = 1
     while True:
-        if country_capital_easy.query.get(count) is not None:
+        if obj.query.get(count) is not None:
             count += 1
         else:
             break
-    count -= 1
-    arange = range(1, count+1)
-    id_answers = random.choices(arange, k=count)
+    arrange = range(1, count)
+    id_answers_prep = list(itertools.permutations(arrange, 4))
+    id_answers = list(id_answers_prep[random.choice(range(len(id_answers_prep)))])
     id_right = random.choice(id_answers)
-    country = country_capital_easy.query.get(id_right)
+    country = obj.query.get(id_right)
     right_name = country.name
-    right_capital = country.capital
+    random.shuffle(id_answers)
     answers = []
-    answers[0] = right_name
-    for i in range(1, count+1);
-        answers[i] = country_capital_easy.query.get(i).capital
+    answers.append(right_name)
+    for i in id_answers:
+        answers.append(obj.query.get(i).capital)
+    return answers

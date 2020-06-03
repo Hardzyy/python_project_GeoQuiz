@@ -4,36 +4,24 @@ from werkzeug.security import check_password_hash, generate_password_hash
 
 from sweater import db, app
 from sweater.models import Message, Users, country_capital_easy
+from sweater.quizbackend import get_random
 
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    name = country_capital_easy.query.get(2)
-    capital = name.capital
-    return render_template('index.html', one=capital)
+    return render_template('index.html')
 
 
 @app.route('/main', methods=['GET'])
 @login_required
 def main():
-    return render_template('main.html', messages=Message.query.all())
+    array = get_random(country_capital_easy)
+    return render_template('main.html',  name=array[0], ans1=array[1],
+                           ans2=array[2], ans3=array[3], ans4=array[4])
 
-
-@app.route('/add_message', methods=['POST'])
-@login_required
-def add_message():
-    text = request.form['text']
-    tag = request.form['tag']
-
-    db.session.add(Message(text, tag))
-    db.session.commit()
-
-    return redirect(url_for('main'))
-
-
-@app.route('/_update', methods=['POST'])
-def update():
-
+#
+# @app.route('/_update', methods=['POST'])
+# def update():
 
 
 @app.route('/register', methods=['GET', 'POST'])
