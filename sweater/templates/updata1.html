@@ -7,10 +7,10 @@
 <body>
 <h3 id="que">Question <i id="ans_id">1</i> of 10.</h3>
 <div id="response">
-    <p id="all" style="visibility: hidden">{{ right_ans }}</p>
+    <p id="all" style="visibility: hidden">{{ right_ans|tojson }}</p>
     <form method="POST" name="enter">
     <table>
-        <thead>Find the capital of {{ name }}</thead>
+        <thead>Find the capital of <i id="capital_name">{{ name }}</i></thead>
         <tr>
             <td><label><input id="sel1" name="check" type="radio" value={{ ans1 }}>{{ ans1 }}</label></td>
             <td><label><input id="sel2" name="check" type="radio" value={{ ans2 }}>{{ ans2 }}</label></td>
@@ -25,14 +25,24 @@
 <button id="btn">Check</button>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 <script type="text/javascript">
-let count_true = "";
+let count_true = 0;
+let right_arr = "";
 $('button#btn').click(function(){
   let selectors = document.enter.check;
-  let anws = document.getElementById("all").innerText;
+  let right = document.getElementById("all").innerHTML;
+  let str = right.substring(1, right.length-1);
+  let nam = {{ name|tojson }};
   for (let i = 0; i<selectors.length; i++){
       if (selectors[i].checked) {
-         count_true += anws;
+          if (selectors[i].value === str){
+              count_true += 1;
+          }
+          else {
+                let count = document.getElementById('ans_id').innerHTML;
+                right_arr += "Вы ошиблись в впоросе " + count +". Стольца " + nam + " - это "+str+ "."+'\r\n' ;
+          }
       }
+
   }
 });
 $('button#btn').click(function(){
@@ -52,6 +62,8 @@ $('button#btn').click(function(){
                 div.innerHTML += resp.data;
                 let na = document.getElementById('answers');
                 na.innerText += "You have " + count_true + " right answers!";
+                let dop = document.getElementById("right_ans");
+                dop.insertAdjacentHTML("beforeend", "<p>"+right_arr+"</p>");
             }
         });
     }
