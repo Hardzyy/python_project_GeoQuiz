@@ -2,16 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
     <title>Start</title>
+
+     <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-<h1>Hello mate</h1>
-<a href="{{url_for('main')}}">Main page</a>
-<a href="{{url_for('logout')}}">logout</a>
-<a href="{{url_for('login_page')}}">login</a>
-<a href="{{url_for('register')}}">register</a>
+	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+			<div class="container">
+				<a class="navbar-brand" href="">
+					<img src="" alt="" />
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto"  id='head-cont'>
+						<li class="nav-item active"><a class="nav-link" href="{{url_for('hello_world') }}">Home</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('main')}}">Quiz</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('login_page')}}">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('register')}}">Register</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
 
-<p class="text-center">{{ one }}</p>
-<p class="text-center">{{ co }}</p>
 </body>
 </html>
