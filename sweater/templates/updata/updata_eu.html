@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>test easy</title>
+    <title>{{ title }}</title>
 </head>
 <body>
 <h3 id="que">Question <i id="ans_id">1</i> of 10.</h3>
@@ -72,7 +72,7 @@ $('button#btn').click(function(){
     }
     else {
             $.ajax({
-            url: "/_update/",
+            url: "/update_eu/",
             type: "POST",
             success: function(resp){
                 let div = document.getElementById("response");

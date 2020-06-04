@@ -27,6 +27,11 @@ class Africa(db.Model):
     capital = db.Column(db.String(255))
 
 
+class Oceania(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    capital = db.Column(db.String(255))
+
 # class country_capital_easy(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(255))

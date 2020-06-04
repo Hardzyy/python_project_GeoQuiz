@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from sweater import db, app
-from sweater.models import Users, Europe
+from sweater.models import Users, Europe, Africa, Asia, America, Oceania
 from sweater.quizbackend import get_random
 
 
@@ -21,22 +21,66 @@ def main():
 @app.route('/testEurope', methods=['GET', 'POST'])
 @login_required
 def test_europe():
-    return render_template('testEurope.html')
+    return render_template('tests/testEurope.html', page_name="Test Europe")
 
 
-@app.route('/_update', methods=['POST', 'GET'])
+@app.route('/update_eu', methods=['POST', 'GET'])
 @login_required
-def update1():
+def update_europe():
     array = get_random(Europe)
-    return render_template('updata1.html', right_ans=array[0].capital, name=array[0].name, ans1=array[1],
-                           ans2=array[2], ans3=array[3], ans4=array[4])
+    return render_template('updata/updata_eu.html', title='Test Europe', right_ans=array[0].capital, name=array[0].name,
+                           ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])
 
 
-@app.route('/_update/', methods=['POST', 'GET'])
+@app.route('/update_eu/', methods=['POST', 'GET'])
 @login_required
-def update():
+def update_eu():
     array = get_random(Europe)
-    return jsonify({'data': render_template('updata.html', right_ans=array[0].capital, name=array[0].name,
+    return jsonify({'data': render_template('updata/updata.html', right_ans=array[0].capital, name=array[0].name,
+                                            ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])})
+
+
+@app.route('/testAfrica', methods=['GET', 'POST'])
+@login_required
+def test_africa():
+    return render_template('tests/testAfrica.html', page_name="Test Africa")
+
+
+@app.route('/update_af', methods=['POST', 'GET'])
+@login_required
+def update_africa():
+    array = get_random(Africa)
+    return render_template('updata/updata_af.html', title='Test Africa', right_ans=array[0].capital, name=array[0].name,
+                           ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])
+
+
+@app.route('/update_af/', methods=['POST', 'GET'])
+@login_required
+def update_af():
+    array = get_random(Africa)
+    return jsonify({'data': render_template('updata/updata.html', right_ans=array[0].capital, name=array[0].name,
+                                            ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])})
+
+
+@app.route('/testAsia', methods=['GET', 'POST'])
+@login_required
+def test_asia():
+    return render_template('tests/testAsia.html', page_name="Test Asia")
+
+
+@app.route('/update_as', methods=['POST', 'GET'])
+@login_required
+def update_asia():
+    array = get_random(Asia)
+    return render_template('updata/updata_as.html', title='Test Asia', right_ans=array[0].capital, name=array[0].name,
+                           ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])
+
+
+@app.route('/update_as/', methods=['POST', 'GET'])
+@login_required
+def update_as():
+    array = get_random(Asia)
+    return jsonify({'data': render_template('updata/updata.html', right_ans=array[0].capital, name=array[0].name,
                                             ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])})
 
 
@@ -44,6 +88,28 @@ def update():
 @login_required
 def end_test():
     return jsonify({'data': render_template('end_test.html')})
+
+
+@app.route('/testOceania', methods=['GET', 'POST'])
+@login_required
+def test_oceania():
+    return render_template('tests/testOceania.html', page_name="Test Oceania")
+
+
+@app.route('/update_oc', methods=['POST', 'GET'])
+@login_required
+def update_oceania():
+    array = get_random(Oceania)
+    return render_template('updata/updata_oc.html', title='Test Asia', right_ans=array[0].capital, name=array[0].name,
+                           ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])
+
+
+@app.route('/update_oc/', methods=['POST', 'GET'])
+@login_required
+def update_oc():
+    array = get_random(Oceania)
+    return jsonify({'data': render_template('updata/updata.html', right_ans=array[0].capital, name=array[0].name,
+                                            ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])})
 
 
 @app.route('/register', methods=['GET', 'POST'])
