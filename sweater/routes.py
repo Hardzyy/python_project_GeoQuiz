@@ -18,10 +18,10 @@ def main():
     return render_template('main.html')
 
 
-@app.route('/testeasy', methods=['GET', 'POST'])
+@app.route('/testEurope', methods=['GET', 'POST'])
 @login_required
-def easy_test():
-    return render_template('testeasy.html')
+def test_europe():
+    return render_template('testEurope.html')
 
 
 @app.route('/_update', methods=['POST', 'GET'])

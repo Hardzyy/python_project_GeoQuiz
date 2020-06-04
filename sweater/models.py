@@ -9,6 +9,24 @@ class Europe(db.Model):
     capital = db.Column(db.String(255))
 
 
+class Asia(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    capital = db.Column(db.String(255))
+
+
+class America(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    capital = db.Column(db.String(255))
+
+
+class Africa(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    capital = db.Column(db.String(255))
+
+
 # class country_capital_easy(db.Model):
 #     id = db.Column(db.Integer, primary_key=True)
 #     name = db.Column(db.String(255))
