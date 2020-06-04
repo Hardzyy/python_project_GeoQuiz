@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from sweater import db, app
-from sweater.models import Message, Users, country_capital_easy
+from sweater.models import Users, Europe
 from sweater.quizbackend import get_random
 
 
@@ -27,7 +27,7 @@ def easy_test():
 @app.route('/_update', methods=['POST', 'GET'])
 @login_required
 def update1():
-    array = get_random(country_capital_easy)
+    array = get_random(Europe)
     return render_template('updata1.html', right_ans=array[0].capital, name=array[0].name, ans1=array[1],
                            ans2=array[2], ans3=array[3], ans4=array[4])
 
@@ -35,7 +35,7 @@ def update1():
 @app.route('/_update/', methods=['POST', 'GET'])
 @login_required
 def update():
-    array = get_random(country_capital_easy)
+    array = get_random(Europe)
     return jsonify({'data': render_template('updata.html', right_ans=array[0].capital, name=array[0].name,
                                             ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])})
 

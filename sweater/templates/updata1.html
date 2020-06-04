@@ -26,12 +26,12 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/3.5.0/jquery.min.js"></script>
 <script type="text/javascript">
 let count_true = 0;
-let right_arr = "";
+let right_arr = new Array();
 $('button#btn').click(function(){
   let selectors = document.enter.check;
   let right = document.getElementById("all").innerHTML;
   let str = right.substring(1, right.length-1);
-  let nam = {{ name|tojson }};
+  let nam = document.getElementById('capital_name').innerHTML;
   for (let i = 0; i<selectors.length; i++){
       if (selectors[i].checked) {
           if (selectors[i].value === str){
@@ -39,7 +39,8 @@ $('button#btn').click(function(){
           }
           else {
                 let count = document.getElementById('ans_id').innerHTML;
-                right_arr += "Вы ошиблись в впоросе " + count +". Стольца " + nam + " - это "+str+ "."+'\r\n' ;
+                let first = "You were mistaken in a question " + count +". The capital of " + nam + " is "+str+ ".";
+                right_arr.push(first);
           }
       }
 
@@ -63,7 +64,9 @@ $('button#btn').click(function(){
                 let na = document.getElementById('answers');
                 na.innerText += "You have " + count_true + " right answers!";
                 let dop = document.getElementById("right_ans");
-                dop.insertAdjacentHTML("beforeend", "<p>"+right_arr+"</p>");
+                for (let i = 0; i<right_arr.length; i++){
+                    dop.insertAdjacentHTML("beforeend", "<p>"+right_arr[i]+"</p>");
+                }
             }
         });
     }
