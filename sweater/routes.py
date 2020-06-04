@@ -9,13 +9,13 @@ from sweater.quizbackend import get_random
 
 @app.route('/', methods=['GET'])
 def hello_world():
-    return render_template('index.html')
+    return render_template('pages/index.html')
 
 
 @app.route('/main', methods=['GET'])
 @login_required
 def main():
-    return render_template('main.html')
+    return render_template('pages/main.html')
 
 
 @app.route('/testEurope', methods=['GET', 'POST'])
@@ -87,7 +87,7 @@ def update_as():
 @app.route('/end_test', methods=['GET', 'POST'])
 @login_required
 def end_test():
-    return jsonify({'data': render_template('end_test.html')})
+    return jsonify({'data': render_template('updata/end_test.html')})
 
 
 @app.route('/testOceania', methods=['GET', 'POST'])
@@ -130,7 +130,7 @@ def register():
 
             return redirect(url_for('login_page'))
 
-    return render_template('register.html')
+    return render_template('pages/register.html')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -147,7 +147,7 @@ def login_page():
             flash('Login or password is not correct')
     else:
         flash('Please enter login and password fields')
-    return render_template('login.html')
+    return render_template('pages/login.html')
 
 
 @app.route('/logout', methods=['GET', 'POST'])

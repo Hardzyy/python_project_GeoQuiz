@@ -12,6 +12,7 @@
         <option value="$MODULE_DIR$/sweater/templates" />
         <option value="$MODULE_DIR$/sweater/templates/updata" />
         <option value="$MODULE_DIR$/sweater/templates/tests" />
+        <option value="$MODULE_DIR$/sweater/templates/pages" />
       </list>
     </option>
   </component>
