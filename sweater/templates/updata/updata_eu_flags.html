@@ -28,12 +28,13 @@
 	</header>
 <div id="some">
     <div class="col-md-12">
-        <img style="opacity: .8;" class="img-fluid" src="https://www.komar.de/ru/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-050_worldmap_neu_ma_1.jpg">
+        <img style="opacity: .8;" class="img-fluid" src="https://vemaps.com/uploads/img/large/eu-c-04.jpg">
     </div>
 </div>
 <h3 id="que">Question <i id="ans_id">1</i> of 10.</h3>
 <div id="response">
     <p id="all" style="visibility: hidden">{{ right_ans|tojson }}</p>
+    <h6 id="helper" style="visibility: hidden; position: absolute">{{ name }}</h6>
     <form method="POST" name="enter" id="table">
     <table>
         <thead>Find the country with this flag <img src="{{ name }}" id="capital_name"></thead>
@@ -64,20 +65,22 @@
 <script type="text/javascript">
 let count_true = 0;
 let right_arr = new Array();
+let right_arr_help = new Array();
 $('button#btn').click(function(){
   let selectors = document.enter.check;
   let right = document.getElementById("all").innerHTML;
   let str = right.substring(1, right.length-1);
-  let nam = document.getElementById('capital_name').innerHTML;
+  let nam = document.getElementById('helper').innerHTML;
   for (let i = 0; i<selectors.length; i++){
       if (selectors[i].checked) {
           if (selectors[i].value === str){
               count_true += 1;
           }
           else {
-                let count = document.getElementById('ans_id').innerHTML;
-                let first = "You were mistaken in a question " + count +". This is the flag of "+str+ ".";
+                let first = nam;
+                let second = str;
                 right_arr.push(first);
+                right_arr_help.push(second);
           }
       }
 
@@ -100,10 +103,14 @@ $('button#btn').click(function(){
                 div.innerHTML += resp.data;
                 let na = document.getElementById('answers');
                 na.innerText += "You have " + count_true + " right answers!";
-                document.getElementById('right').value = count_true;
-                let dop = document.getElementsByClassName('right')
+                let dop = document.getElementById("right_ans");
                 for (let i = 0; i<right_arr.length; i++){
-                    dop.insertAdjacentHTML("beforeend", "<p>"+right_arr[i]+"</p>");
+                    let img = document.createElement("IMG");
+                    img.src = right_arr[i];
+                    let p = document.createElement("p");
+                    p.innerHTML = "This is a flag of " + right_arr_help[i] +".";
+                    dop.appendChild(img);
+                    dop.appendChild(p);
                 }
             }
         });

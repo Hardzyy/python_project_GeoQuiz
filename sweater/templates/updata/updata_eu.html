@@ -28,7 +28,7 @@
 	</header>
 <div id="some">
     <div class="col-md-12">
-        <img style="opacity: .8;" class="img-fluid" src="https://www.komar.de/ru/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-050_worldmap_neu_ma_1.jpg">
+        <img style="opacity: 1;" class="img-fluid" src="https://vemaps.com/uploads/img/large/eu-c-04.jpg">
     </div>
 </div>
 <h3 id="que">Question <i id="ans_id">1</i> of 10.</h3>
@@ -100,8 +100,7 @@ $('button#btn').click(function(){
                 div.innerHTML += resp.data;
                 let na = document.getElementById('answers');
                 na.innerText += "You have " + count_true + " right answers!";
-                document.getElementById('right').value = count_true;
-                let dop = document.getElementsByClassName('right')
+                let dop = document.getElementById("right_ans");
                 for (let i = 0; i<right_arr.length; i++){
                     dop.insertAdjacentHTML("beforeend", "<p>"+right_arr[i]+"</p>");
                 }
