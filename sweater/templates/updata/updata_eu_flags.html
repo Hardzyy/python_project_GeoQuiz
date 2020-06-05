@@ -36,7 +36,7 @@
     <p id="all" style="visibility: hidden">{{ right_ans|tojson }}</p>
     <form method="POST" name="enter" id="table">
     <table>
-        <thead>Find the capital of <i id="capital_name">{{ name }}</i></thead>
+        <thead>Find the country with this flag <img src="{{ name }}" id="capital_name"></thead>
         <tr>
             <td><label><input id="sel1" name="check" type="radio" value={{ ans1 }}>{{ ans1 }}</label></td>
             <td><label><input id="sel2" name="check" type="radio" value={{ ans2 }}>{{ ans2 }}</label></td>
@@ -76,7 +76,7 @@ $('button#btn').click(function(){
           }
           else {
                 let count = document.getElementById('ans_id').innerHTML;
-                let first = "You were mistaken in a question " + count +". The capital of " + nam + " is "+str+ ".";
+                let first = "You were mistaken in a question " + count +". This is the flag of "+str+ ".";
                 right_arr.push(first);
           }
       }
@@ -88,7 +88,7 @@ $('button#btn').click(function(){
     let ans_id = parseInt(ans.innerHTML);
     if (ans_id==10) {
             $.ajax({
-            url: "/end_test",
+            url: "/end_test_flag",
             type: "POST",
             success: function(resp){
                 let que = document.getElementById("que");
@@ -110,7 +110,7 @@ $('button#btn').click(function(){
     }
     else {
             $.ajax({
-            url: "/update_eu/",
+            url: "/update_eu_flags/",
             type: "POST",
             success: function(resp){
                 let div = document.getElementById("response");
@@ -147,7 +147,7 @@ $('button#btn').click(function(){
 #btn {
     position: absolute;
     left: 47%;
-    top: 46%;
+    top: 50%;
 }
 
 </style>

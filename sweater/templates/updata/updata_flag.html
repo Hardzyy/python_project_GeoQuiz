@@ -1,7 +1,7 @@
 <p id="all" style="visibility: hidden">{{ right_ans|tojson }}</p>
 <form method="POST" name="enter" id="table">
     <table>
-        <thead>Find the capital of <i id="capital_name">{{ name }}</i></thead>
+        <thead>Find the country with this flag <img src="{{ name }}" id="capital_name"/></thead>
         <tr>
             <td><label><input id="sel1" name="check" type="radio" value={{ ans1 }}>{{ ans1 }}</label></td>
             <td><label><input id="sel2" name="check" type="radio" value={{ ans2 }}>{{ ans2 }}</label></td>

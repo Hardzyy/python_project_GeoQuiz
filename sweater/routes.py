@@ -3,7 +3,7 @@ from flask_login import login_user, login_required, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from sweater import db, app
-from sweater.models import Users, Europe, Africa, Asia, America, Oceania, manager
+from sweater.models import Users, Europe, Africa, Asia, Oceania, Europeflags
 from sweater.quizbackend import get_random
 
 
@@ -27,18 +27,25 @@ def test_europe_flag():
 @app.route('/update_eu_flags', methods=['POST', 'GET'])
 @login_required
 def update_europe_flag():
-    array = get_random(Europe)
-    return render_template('updata/updata_eu_flags.html', title='Test Europe', right_ans=array[0].capital,
-                           name=array[0].name, ans1=array[1], ans2=array[2], ans3=array[3], ans4=array[4])
+    array = get_random(Europeflags)
+    return render_template('updata/updata_eu_flags.html', title='Test Flags of Europe', right_ans=array[0].name,
+                           name=array[0].url_img, ans1=array[1].name, ans2=array[2].name, ans3=array[3].name,
+                           ans4=array[4].name)
 
 
 @app.route('/update_eu_flags/', methods=['POST', 'GET'])
 @login_required
 def update_eu_flag():
-    array = get_random(Europe)
-    return jsonify({'data': render_template('updata/updata_flags.html', right_ans=array[0].capital,
-                                            name=array[0].name, ans1=array[1], ans2=array[2],
-                                            ans3=array[3], ans4=array[4])})
+    array = get_random(Europeflags)
+    return jsonify({'data': render_template('updata/updata_flag.html', right_ans=array[0].name,
+                   name=array[0].url_img, ans1=array[1].name, ans2=array[2].name, ans3=array[3].name,
+                   ans4=array[4].name)})
+
+
+@app.route('/end_test_flag', methods=['GET', 'POST'])
+@login_required
+def end_test_flag():
+    return jsonify({'data': render_template('updata/end_test_flag.html')})
 
 
 @app.route('/testEurope', methods=['GET', 'POST'])
