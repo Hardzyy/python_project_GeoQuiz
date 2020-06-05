@@ -2,14 +2,75 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ page_name }}</title>
-</head>
-<body>
-<div id="form">
-<form id="enter">
-    <a href="{{ url_for('update_asia') }}">Start</a>
-</form>
-</div>
 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{{ page_name }}</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+
+</head>
+<body>	<header class="top-navbar">
+		<nav class="navbar navbar-expand-lg navbar-light bg-light" >
+			<div class="container">
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
+				  <span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbars-rs-food">
+					<ul class="navbar-nav ml-auto"  id='head-cont'>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('hello_world') }}">Home</a></li>
+						<li class="nav-item active"><a class="nav-link" href="{{url_for('main')}}">Quiz</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('login_page')}}">Login</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('logout')}}">Logout</a></li>
+						<li class="nav-item"><a class="nav-link" href="{{url_for('register')}}">Register</a></li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+	</header>
+<div id="ahh">
+        <div class="col-md-12">
+            <img style="opacity: .8;" class="img-fluid" src="https://www.komar.de/ru/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-050_worldmap_neu_ma_1.jpg">
+            <h3 id="text">Here you'll get 10 questions about capitals of Asia</h3>
+            <a id="url" href="{{ url_for('update_asia') }}">Start</a>
+        </div>
+</div>
+<footer class="footer-area bg-f">
+		<div class="copyright">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<p class="company-name">All Rights Reserved. &copy; 2020 <a href="#">GeoQuiz</a> Design By : Mikita Korbovskiy</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</footer>
+<script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
 </body>
+<style>
+    #url{
+        color: black;
+        font-size: 30px;
+        position: absolute;
+        left:49%;
+        top:40%;
+    }
+    #url:hover{
+        color: black;
+        font-size: 35px;
+        position: absolute;
+        left:49%;
+        top:40%;
+    }
+    #text {
+        color: black;
+        position: absolute;
+        left:32%;
+        top:30%;
+    }
+</style>
 </html>

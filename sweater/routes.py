@@ -1,9 +1,9 @@
 from flask import redirect, url_for, flash, render_template, request, jsonify
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from sweater import db, app
-from sweater.models import Users, Europe, Africa, Asia, America, Oceania
+from sweater.models import Users, Europe, Africa, Asia, America, Oceania, manager
 from sweater.quizbackend import get_random
 
 
@@ -15,7 +15,10 @@ def hello_world():
 @app.route('/main', methods=['GET'])
 @login_required
 def main():
-    return render_template('pages/main.html')
+    id = 0
+    if current_user.is_authenticated:
+        id = current_user.right_answers
+    return render_template('pages/main.html', ama=id)
 
 
 @app.route('/testEurope', methods=['GET', 'POST'])
