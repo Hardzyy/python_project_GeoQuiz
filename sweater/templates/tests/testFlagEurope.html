@@ -2,19 +2,27 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <title>{{ page_name }}</title>
+</head>
+<body>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>Start</title>
+    <title>{{ page_name }}</title>
 
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/responsive.css') }}">
     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
 
-
 </head>
 <body>
-	<header class="top-navbar">
+<header class="top-navbar">
 		<nav class="navbar navbar-expand-lg navbar-light bg-light" >
 			<div class="container">
 				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbars-rs-food" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,25 +40,17 @@
 			</div>
 		</nav>
 	</header>
-
-    <div class="col-md-12">
-        <div id="stuff">
-                <img style="opacity: 0.8;" class="img-fluid" src="https://images.wallpaperscraft.ru/image/gorod_skaly_gory_134667_1920x1080.jpg">
+<div id="ahh">
+        <div class="col-md-12">
+            <img style="opacity: .8;" class="img-fluid" src="https://www.komar.de/ru/media/catalog/product/cache/7/image/9df78eab33525d08d6e5fb8d27136e95/4/-/4-050_worldmap_neu_ma_1.jpg">
+            <h3 id="text">Here you'll get 10 questions about flags of Europe</h3>
+            <a id="url" href="{{ url_for('update_europe') }}">Start</a>
         </div>
-    </div>
-    <h1 id="ahh">Choose a type of a Quiz</h1>
-                <ul id="abx">
-                    <li><a class="a" href="{{url_for('hello_world')}}">Return to start</a></li>
-                    <li><a class="a" href="{{url_for('test_europe')}}">Capitals of Europe</a></li>
-                    <li><a class="a" href="{{url_for('test_asia')}}">Capitals of Asia</a></li>
-                    <li><a class="a" href="#">Capitals of America(Soon)</a></li>
-                    <li><a class="a" href="{{url_for('test_africa')}}">Capitals of Africa</a></li>
-                    <li><a class="a" href="{{ url_for('test_oceania') }}">Capitals of Oceania</a></li>
-                    <li><a class="a" href="{{ url_for('test_europe_flag') }}">Flags of Europe</a></li>
-                </ul>
-
-	<!-- Start Footer -->
-	<footer class="footer-area bg-f">
+</div>
+<div>
+    <img src="https://s3.amazonaws.com/images.wpr.com/flags/64/AX.png">
+</div>
+<footer class="footer-area bg-f">
 		<div class="copyright">
 			<div class="container">
 				<div class="row">
@@ -60,40 +60,30 @@
 				</div>
 			</div>
 		</div>
-
 	</footer>
-	<!-- End Footer -->
 <script src="{{ url_for('static', filename='js/jquery-3.2.1.min.js') }}"></script>
 <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/custom.js') }}"></script>
-<script src="{{ url_for('static', filename='js/jquery.superslides.min.js') }}"></script>
 </body>
 <style>
-    #ahh{
-        position: absolute;
-        color: white;
-        top: 10%;
-        left: 10%;
-    }
-    #stuff {
-        position: relative;
-        width: 100%;
-    }
-
-    #abx {
-        position: absolute;
-        top		: 22%;
-	    left		: 10%;
-    }
-    #abx .a {
-        font-size: 20px;
-        color: white;
-    }
-
-    #abx .a:hover {
+    #url{
+        color: black;
         font-size: 30px;
-        color: red;
+        position: absolute;
+        left:49%;
+        top:40%;
     }
-
+    #url:hover{
+        color: black;
+        font-size: 35px;
+        position: absolute;
+        left:49%;
+        top:40%;
+    }
+    #text {
+        color: black;
+        position: absolute;
+        left:32%;
+        top:30%;
+    }
 </style>
 </html>

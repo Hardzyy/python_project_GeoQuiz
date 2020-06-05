@@ -20,5 +20,5 @@ def get_random(obj):
     answers = []
     answers.append(country)
     for i in id_answers:
-        answers.append(obj.query.get(i).capital)
+        answers.append(obj.query.get(i))
     return answers

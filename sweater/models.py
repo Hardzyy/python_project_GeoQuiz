@@ -9,6 +9,12 @@ class Europe(db.Model):
     capital = db.Column(db.String(255))
 
 
+class Europeflags(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+    url_img = db.Column(db.String(255))
+
+
 class Asia(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255))
@@ -37,8 +43,8 @@ class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     login = db.Column(db.String(255), nullable=False, unique=True)
     password = db.Column(db.String(1024), nullable=False)
-    all_tries = db.Column(db.Integer)
-    right_answers = db.Column(db.Integer)
+    all_tries = db.Column(db.Integer, default=0)
+    right_answers = db.Column(db.Integer, default=0)
 
 
 @manager.user_loader
